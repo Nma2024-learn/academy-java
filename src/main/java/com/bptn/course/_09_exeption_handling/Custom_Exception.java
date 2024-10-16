@@ -1,0 +1,28 @@
+package com.bptn.course._09_exeption_handling;
+
+	class InsufficientBalanceException extends Exception {
+		 public InsufficientBalanceException(String message) {
+		  super(message);
+		 }
+
+		 public void withdraw(double amountToWithdraw) throws InsufficientBalanceException {
+		  if (accountBalance >= amountToWithdraw) {
+		   this.accountBalance -= amountToWithdraw;
+		   System.out.println("Withdrawal Successful!");
+		  } else {
+		   throw new InsufficientBalanceException("Insufficient funds!");
+		  }
+		 }
+
+
+		 public static void main(String[] args) {
+		  CustomException myDemo = new CustomException(1000.00);
+		  try {
+		   myDemo.withdraw(1500);
+		  } catch(InsufficientBalanceException e) {
+		   System.out.println(e.getMessage());
+		  }
+		 }
+
+
+		}
